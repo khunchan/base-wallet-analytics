@@ -42,7 +42,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
         .bg-grid {
             position: fixed;
             top: 0;
@@ -88,7 +87,6 @@
             z-index: 1;
         }
 
-        /* Header */
         header {
             text-align: center;
             padding: 40px 0;
@@ -132,7 +130,6 @@
             font-size: 1.1rem;
         }
 
-        /* Search Section */
         .search-section {
             max-width: 700px;
             margin: 0 auto 50px;
@@ -194,7 +191,6 @@
             transform: none;
         }
 
-        /* Loading */
         .loading {
             display: none;
             text-align: center;
@@ -223,7 +219,6 @@
             color: var(--text-secondary);
         }
 
-        /* Results */
         .results {
             display: none;
         }
@@ -238,7 +233,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Wallet Header Card */
         .wallet-header {
             background: var(--bg-card);
             border-radius: 20px;
@@ -286,7 +280,6 @@
             font-size: 1rem;
         }
 
-        /* Wallet Score */
         .wallet-score {
             text-align: center;
         }
@@ -325,7 +318,6 @@
             font-size: 0.9rem;
         }
 
-        /* Personality Badge */
         .personality-section {
             background: var(--bg-card);
             border-radius: 20px;
@@ -361,7 +353,6 @@
             font-size: 0.9rem;
         }
 
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -426,7 +417,6 @@
         .stat-sub.green { color: var(--accent-green); }
         .stat-sub.red { color: var(--accent-red); }
 
-        /* Achievements */
         .achievements-section {
             background: var(--bg-card);
             border-radius: 20px;
@@ -478,7 +468,6 @@
             font-weight: 500;
         }
 
-        /* Heatmap */
         .heatmap-section {
             background: var(--bg-card);
             border-radius: 20px;
@@ -509,6 +498,7 @@
             border-radius: 3px;
             background: var(--bg-secondary);
             transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .heatmap-day:hover {
@@ -534,7 +524,6 @@
             font-size: 0.8rem;
         }
 
-        /* Transactions */
         .transactions-section {
             background: var(--bg-card);
             border-radius: 20px;
@@ -580,6 +569,7 @@
 
         .tx-icon.in { background: rgba(16, 185, 129, 0.2); }
         .tx-icon.out { background: rgba(239, 68, 68, 0.2); }
+        .tx-icon.contract { background: rgba(139, 92, 246, 0.2); }
 
         .tx-hash {
             font-family: 'JetBrains Mono', monospace;
@@ -590,6 +580,16 @@
 
         .tx-hash:hover {
             text-decoration: underline;
+        }
+
+        .tx-method {
+            font-size: 0.75rem;
+            color: var(--accent-purple);
+            background: rgba(139, 92, 246, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 4px;
+            display: inline-block;
         }
 
         .tx-time {
@@ -614,7 +614,10 @@
             color: var(--text-muted);
         }
 
-        /* Error */
+        .tx-status.failed {
+            color: var(--accent-red);
+        }
+
         .error {
             display: none;
             text-align: center;
@@ -638,7 +641,6 @@
             font-size: 1.2rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px;
@@ -651,7 +653,6 @@
             text-decoration: none;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.8rem;
@@ -712,7 +713,6 @@
         </div>
 
         <div class="results" id="results">
-            <!-- Wallet Header -->
             <div class="wallet-header">
                 <div class="wallet-info">
                     <div class="wallet-avatar" id="walletAvatar">🔷</div>
@@ -730,7 +730,6 @@
                 </div>
             </div>
 
-            <!-- Personality -->
             <div class="personality-section">
                 <div class="personality-badge" id="personalityBadge">
                     <span class="personality-icon" id="personalityIcon">🎭</span>
@@ -741,7 +740,6 @@
                 </div>
             </div>
 
-            <!-- Stats Grid -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
@@ -764,7 +762,7 @@
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-icon orange">⛽</div>
-                        <span class="stat-title">Gas Spent</span>
+                        <span class="stat-title">Gas Spent (L2 + L1)</span>
                     </div>
                     <div class="stat-value" id="gasSpent">0 ETH</div>
                     <div class="stat-sub" id="gasUsd">≈ $0.00</div>
@@ -798,21 +796,15 @@
                 </div>
             </div>
 
-            <!-- Achievements -->
             <div class="achievements-section">
                 <h3 class="section-title">🏆 Achievements</h3>
-                <div class="achievements-grid" id="achievementsGrid">
-                    <!-- Filled by JS -->
-                </div>
+                <div class="achievements-grid" id="achievementsGrid"></div>
             </div>
 
-            <!-- Heatmap -->
             <div class="heatmap-section">
                 <h3 class="section-title">📈 Activity Heatmap (Last 52 weeks)</h3>
                 <div class="heatmap-container">
-                    <div class="heatmap" id="heatmap">
-                        <!-- Filled by JS -->
-                    </div>
+                    <div class="heatmap" id="heatmap"></div>
                 </div>
                 <div class="heatmap-legend">
                     <span>Less</span>
@@ -826,66 +818,82 @@
                 </div>
             </div>
 
-            <!-- Recent Transactions -->
             <div class="transactions-section">
                 <h3 class="section-title">🔗 Recent Transactions</h3>
-                <div class="tx-list" id="txList">
-                    <!-- Filled by JS -->
-                </div>
+                <div class="tx-list" id="txList"></div>
             </div>
         </div>
 
         <footer>
-            <p>Built with 💙 for Base network • Powered by <a href="https://basescan.org" target="_blank">Basescan API</a></p>
+            <p>Built with 💙 for Base network • Powered by <a href="https://etherscan.io" target="_blank">Etherscan V2 API</a></p>
             <p style="margin-top: 10px;">© 2024 <a href="https://github.com/khunchan" target="_blank">khunchan</a></p>
         </footer>
     </div>
 
     <script>
+        // ============================================
+        // CONFIGURATION - Etherscan V2 API for Base
+        // ============================================
         const API_KEY = 'DY9S61THQXFJ7FPF9W4Q3U5JDT9AGESNBF';
-        const BASE_API = 'https://api.basescan.org/api';
+        const BASE_CHAIN_ID = 8453;
+        const API_BASE = `https://api.etherscan.io/v2/api?chainid=${BASE_CHAIN_ID}`;
         
-        let ethPrice = 3500; // Default fallback
+        let ethPrice = 3500;
 
-        // Personalities
+        // ============================================
+        // PERSONALITIES
+        // ============================================
         const PERSONALITIES = {
-            degen: { icon: '🎰', title: 'Degen', desc: 'High-risk trader, loves to swap' },
-            whale: { icon: '🐋', title: 'Whale', desc: 'Big player, massive transactions' },
+            degen: { icon: '🎰', title: 'Degen', desc: 'High-risk trader, loves DeFi and swaps' },
+            whale: { icon: '🐋', title: 'Whale', desc: 'Big player with massive transactions' },
             diamond: { icon: '💎', title: 'Diamond Hands', desc: 'Patient holder, rarely trades' },
-            shrimp: { icon: '🦐', title: 'Shrimp', desc: 'Small but active participant' },
+            shrimp: { icon: '🦐', title: 'Shrimp', desc: 'Small but consistently active' },
             builder: { icon: '🏗️', title: 'Builder', desc: 'Deploys contracts, creates things' },
-            bot: { icon: '🤖', title: 'Bot Suspect', desc: 'Unusually regular patterns' },
-            ghost: { icon: '👻', title: 'Ghost', desc: 'Very low activity' },
+            bot: { icon: '🤖', title: 'Bot Suspect', desc: 'Unusually regular transaction patterns' },
+            ghost: { icon: '👻', title: 'Ghost', desc: 'Very low activity, mostly dormant' },
             explorer: { icon: '🧭', title: 'Explorer', desc: 'Tries many different protocols' },
-            newbie: { icon: '🐣', title: 'Newbie', desc: 'Just getting started' }
+            newbie: { icon: '🐣', title: 'Newbie', desc: 'Just getting started on Base' },
+            veteran: { icon: '🎖️', title: 'Veteran', desc: 'Early Base adopter, experienced user' }
         };
 
-        // Achievements
+        // ============================================
+        // ACHIEVEMENTS
+        // ============================================
         const ACHIEVEMENTS = [
             { id: 'first_tx', icon: '🎯', name: 'First Steps', check: (d) => d.totalTx >= 1 },
             { id: 'tx_10', icon: '🔟', name: '10 Transactions', check: (d) => d.totalTx >= 10 },
             { id: 'tx_100', icon: '💯', name: 'Century Club', check: (d) => d.totalTx >= 100 },
+            { id: 'tx_500', icon: '🔥', name: 'On Fire', check: (d) => d.totalTx >= 500 },
             { id: 'tx_1000', icon: '🚀', name: 'Power User', check: (d) => d.totalTx >= 1000 },
-            { id: 'gas_burner', icon: '🔥', name: 'Gas Burner', check: (d) => d.gasSpent > 0.1 },
-            { id: 'gas_whale', icon: '⛽', name: 'Gas Whale', check: (d) => d.gasSpent > 1 },
+            { id: 'gas_burner', icon: '⛽', name: 'Gas Burner', check: (d) => d.gasSpent > 0.01 },
+            { id: 'gas_whale', icon: '🛢️', name: 'Gas Whale', check: (d) => d.gasSpent > 0.1 },
             { id: 'fail_master', icon: '❌', name: 'Fail Master', check: (d) => d.failedTx >= 10 },
             { id: 'perfect', icon: '✨', name: 'Perfectionist', check: (d) => d.totalTx > 50 && d.failedTx === 0 },
-            { id: 'og', icon: '🎂', name: 'OG', check: (d) => d.walletAgeDays > 365 },
+            { id: 'early_adopter', icon: '🌅', name: 'Early Adopter', check: (d) => d.walletAgeDays > 365 },
             { id: 'veteran', icon: '🎖️', name: 'Veteran', check: (d) => d.walletAgeDays > 180 },
             { id: 'explorer', icon: '🧭', name: 'Explorer', check: (d) => d.uniqueContracts >= 20 },
+            { id: 'defi_user', icon: '🏦', name: 'DeFi User', check: (d) => d.uniqueContracts >= 10 },
             { id: 'social', icon: '🤝', name: 'Social Butterfly', check: (d) => d.uniqueAddresses >= 50 }
         ];
 
+        // ============================================
+        // API FUNCTIONS
+        // ============================================
         function updateLoadingText(text) {
             document.getElementById('loadingText').textContent = text;
         }
 
-        async function fetchAPI(url) {
+        async function fetchAPI(endpoint) {
             try {
+                const url = `${API_BASE}&${endpoint}&apikey=${API_KEY}`;
+                console.log('Fetching:', url);
+                
                 const response = await fetch(url);
                 const data = await response.json();
                 
-                if (data.status === '0' && data.message === 'NOTOK') {
+                console.log('Response:', data);
+                
+                if (data.status === '0' && data.message !== 'No transactions found') {
                     console.error('API Error:', data.result);
                     return null;
                 }
@@ -899,7 +907,7 @@
 
         async function getEthPrice() {
             try {
-                const data = await fetchAPI(`${BASE_API}?module=stats&action=ethprice&apikey=${API_KEY}`);
+                const data = await fetchAPI('module=stats&action=ethprice');
                 if (data && data.result && data.result.ethusd) {
                     ethPrice = parseFloat(data.result.ethusd);
                 }
@@ -909,7 +917,7 @@
         }
 
         async function getBalance(address) {
-            const data = await fetchAPI(`${BASE_API}?module=account&action=balance&address=${address}&apikey=${API_KEY}`);
+            const data = await fetchAPI(`module=account&action=balance&address=${address}`);
             if (data && data.result) {
                 return parseInt(data.result) / 1e18;
             }
@@ -917,7 +925,8 @@
         }
 
         async function getTransactions(address) {
-            const data = await fetchAPI(`${BASE_API}?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10000&sort=desc&apikey=${API_KEY}`);
+            // Fetch all transactions (up to 10000)
+            const data = await fetchAPI(`module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10000&sort=desc`);
             
             if (data && data.result && Array.isArray(data.result)) {
                 return data.result;
@@ -926,6 +935,9 @@
             return [];
         }
 
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
         function shortenAddress(addr) {
             if (!addr || addr.length < 10) return addr;
             return `${addr.slice(0, 8)}...${addr.slice(-6)}`;
@@ -933,7 +945,9 @@
 
         function formatEth(wei) {
             const value = parseInt(wei) / 1e18;
+            if (value === 0) return '0';
             if (value < 0.0001) return '< 0.0001';
+            if (value < 0.01) return value.toFixed(6);
             return value.toFixed(4);
         }
 
@@ -942,18 +956,32 @@
             if (seconds < 60) return `${seconds}s ago`;
             if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
             if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
-            return `${Math.floor(seconds / 86400)}d ago`;
+            if (seconds < 2592000) return `${Math.floor(seconds / 86400)}d ago`;
+            return `${Math.floor(seconds / 2592000)}mo ago`;
         }
 
+        function formatDate(timestamp) {
+            return new Date(timestamp * 1000).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        // ============================================
+        // ANALYSIS FUNCTIONS
+        // ============================================
         function determinePersonality(data) {
-            const { totalTx, avgValue, uniqueContracts, txFrequency, balance, failedTx } = data;
+            const { totalTx, avgValue, uniqueContracts, txFrequency, balance, failedTx, walletAgeDays } = data;
             
             if (totalTx === 0) return PERSONALITIES.newbie;
             if (totalTx < 5) return PERSONALITIES.ghost;
+            if (walletAgeDays > 500 && totalTx > 100) return PERSONALITIES.veteran;
             if (txFrequency > 10) return PERSONALITIES.bot;
             if (balance > 10) return PERSONALITIES.whale;
             if (uniqueContracts > 30) return PERSONALITIES.explorer;
             if (totalTx > 100 && txFrequency < 0.5) return PERSONALITIES.diamond;
+            if (uniqueContracts > 15) return PERSONALITIES.degen;
             if (avgValue > 1) return PERSONALITIES.degen;
             if (balance < 0.1 && totalTx > 20) return PERSONALITIES.shrimp;
             return PERSONALITIES.explorer;
@@ -962,38 +990,42 @@
         function calculateScore(data) {
             let score = 50;
             
-            // Activity
-            if (data.totalTx > 10) score += 5;
-            if (data.totalTx > 50) score += 5;
+            // Activity score (max +20)
+            if (data.totalTx > 10) score += 3;
+            if (data.totalTx > 50) score += 4;
             if (data.totalTx > 100) score += 5;
-            if (data.totalTx > 500) score += 5;
+            if (data.totalTx > 500) score += 4;
+            if (data.totalTx > 1000) score += 4;
             
-            // Success rate
+            // Success rate (max +15)
             const successRate = data.totalTx > 0 ? (data.successTx / data.totalTx) : 0;
             score += Math.floor(successRate * 15);
             
-            // Age
+            // Wallet age (max +15)
             if (data.walletAgeDays > 30) score += 3;
             if (data.walletAgeDays > 90) score += 3;
             if (data.walletAgeDays > 180) score += 4;
             if (data.walletAgeDays > 365) score += 5;
             
-            // Diversity
+            // Protocol diversity (max +10)
             if (data.uniqueContracts > 5) score += 3;
+            if (data.uniqueContracts > 10) score += 3;
             if (data.uniqueContracts > 20) score += 4;
             
-            // Balance
-            if (data.balance > 0.1) score += 3;
-            if (data.balance > 1) score += 2;
+            // Penalty for failed transactions
+            if (data.failedTx > 10) score -= 5;
+            if (data.failedTx > 50) score -= 5;
             
             return Math.min(100, Math.max(0, score));
         }
 
+        // ============================================
+        // RENDERING FUNCTIONS
+        // ============================================
         function generateHeatmap(transactions) {
             const heatmapEl = document.getElementById('heatmap');
             heatmapEl.innerHTML = '';
             
-            // Get activity per day
             const activityMap = {};
             
             if (Array.isArray(transactions)) {
@@ -1005,7 +1037,6 @@
                 });
             }
             
-            // Generate 52 weeks
             const today = new Date();
             for (let week = 51; week >= 0; week--) {
                 const weekDiv = document.createElement('div');
@@ -1028,7 +1059,7 @@
                         else dayDiv.classList.add('level-1');
                     }
                     
-                    dayDiv.title = `${dateStr}: ${count} transactions`;
+                    dayDiv.title = `${dateStr}: ${count} tx`;
                     weekDiv.appendChild(dayDiv);
                 }
                 
@@ -1061,28 +1092,44 @@
                 return;
             }
             
-            const recent = transactions.slice(0, 10);
+            const recent = transactions.slice(0, 15);
             recent.forEach(tx => {
                 const isOut = tx.from && tx.from.toLowerCase() === address.toLowerCase();
+                const isContract = tx.input && tx.input !== '0x';
+                const isFailed = tx.isError === '1';
+                
+                let iconClass = isOut ? 'out' : 'in';
+                let icon = isOut ? '↑' : '↓';
+                if (isContract) {
+                    iconClass = 'contract';
+                    icon = '📄';
+                }
+                
+                const methodName = tx.functionName ? tx.functionName.split('(')[0] : '';
+                
                 const div = document.createElement('div');
                 div.className = 'tx-item';
                 div.innerHTML = `
                     <div class="tx-left">
-                        <div class="tx-icon ${isOut ? 'out' : 'in'}">${isOut ? '↑' : '↓'}</div>
+                        <div class="tx-icon ${iconClass}">${icon}</div>
                         <div>
                             <a href="https://basescan.org/tx/${tx.hash}" target="_blank" class="tx-hash">${shortenAddress(tx.hash)}</a>
-                            <div class="tx-time">${timeAgo(tx.timeStamp)}</div>
+                            ${methodName ? `<div class="tx-method">${methodName}</div>` : ''}
+                            <div class="tx-time">${timeAgo(tx.timeStamp)} • ${formatDate(tx.timeStamp)}</div>
                         </div>
                     </div>
                     <div class="tx-value">
                         <div class="tx-amount ${isOut ? 'out' : 'in'}">${isOut ? '-' : '+'}${formatEth(tx.value)} ETH</div>
-                        <div class="tx-status">${tx.isError === '0' ? '✓ Success' : '✗ Failed'}</div>
+                        <div class="tx-status ${isFailed ? 'failed' : ''}">${isFailed ? '✗ Failed' : '✓ Success'}</div>
                     </div>
                 `;
                 list.appendChild(div);
             });
         }
 
+        // ============================================
+        // MAIN ANALYSIS FUNCTION
+        // ============================================
         async function analyzeWallet() {
             const address = document.getElementById('addressInput').value.trim();
             
@@ -1091,30 +1138,26 @@
                 return;
             }
             
-            // Show loading
             document.getElementById('loading').classList.add('active');
             document.getElementById('results').classList.remove('active');
             document.getElementById('error').classList.remove('active');
             document.getElementById('analyzeBtn').disabled = true;
             
             try {
-                // Step 1: Get ETH price
                 updateLoadingText('Fetching ETH price...');
                 await getEthPrice();
                 
-                // Step 2: Get balance
                 updateLoadingText('Fetching wallet balance...');
                 const balance = await getBalance(address);
                 
-                // Step 3: Get transactions
                 updateLoadingText('Fetching transactions (this may take a moment)...');
                 const transactions = await getTransactions(address);
                 
-                console.log('Transactions received:', transactions.length);
+                console.log(`Found ${transactions.length} transactions`);
                 
-                // Calculate stats
                 updateLoadingText('Analyzing wallet data...');
                 
+                // Calculate statistics
                 const totalTx = transactions.length;
                 const successTx = transactions.filter(tx => tx.isError === '0').length;
                 const failedTx = totalTx - successTx;
@@ -1126,13 +1169,20 @@
                 let totalValue = 0;
                 
                 transactions.forEach(tx => {
+                    // L2 gas cost
                     const gasUsed = parseInt(tx.gasUsed) || 0;
                     const gasPrice = parseInt(tx.gasPrice) || 0;
-                    const gas = (gasUsed * gasPrice) / 1e18;
-                    gasSpent += gas;
+                    const l2Gas = (gasUsed * gasPrice) / 1e18;
                     
-                    if (tx.isError !== '0') {
-                        wastedGas += gas;
+                    // L1 fee (Base specific)
+                    const l1FeesPaid = parseInt(tx.L1FeesPaid) || 0;
+                    const l1Gas = l1FeesPaid / 1e18;
+                    
+                    const totalGas = l2Gas + l1Gas;
+                    gasSpent += totalGas;
+                    
+                    if (tx.isError === '1') {
+                        wastedGas += totalGas;
                     }
                     
                     if (tx.to) {
@@ -1155,12 +1205,11 @@
                     const firstTx = transactions[transactions.length - 1];
                     if (firstTx.timeStamp) {
                         const firstDate = new Date(firstTx.timeStamp * 1000);
-                        firstTxDate = firstDate.toLocaleDateString();
+                        firstTxDate = formatDate(firstTx.timeStamp);
                         walletAgeDays = Math.floor((Date.now() - firstDate.getTime()) / (1000 * 60 * 60 * 24));
                     }
                 }
                 
-                // Tx frequency (per day)
                 const txFrequency = walletAgeDays > 0 ? totalTx / walletAgeDays : totalTx;
                 const avgValue = totalTx > 0 ? totalValue / totalTx : 0;
                 
@@ -1198,30 +1247,26 @@
                 document.getElementById('totalTx').textContent = totalTx.toLocaleString();
                 const outTx = transactions.filter(tx => tx.from && tx.from.toLowerCase() === address.toLowerCase()).length;
                 const inTx = totalTx - outTx;
-                document.getElementById('txBreakdown').textContent = `↑ ${outTx} sent • ↓ ${inTx} received`;
+                document.getElementById('txBreakdown').textContent = `↑ ${outTx.toLocaleString()} sent • ↓ ${inTx.toLocaleString()} received`;
                 
                 const successRatePercent = totalTx > 0 ? ((successTx / totalTx) * 100).toFixed(1) : 0;
                 document.getElementById('successRate').textContent = `${successRatePercent}%`;
-                document.getElementById('successBreakdown').textContent = `✓ ${successTx} success • ✗ ${failedTx} failed`;
+                document.getElementById('successBreakdown').textContent = `✓ ${successTx.toLocaleString()} success • ✗ ${failedTx.toLocaleString()} failed`;
                 
-                document.getElementById('gasSpent').textContent = `${gasSpent.toFixed(4)} ETH`;
+                document.getElementById('gasSpent').textContent = `${gasSpent.toFixed(6)} ETH`;
                 document.getElementById('gasUsd').textContent = `≈ $${(gasSpent * ethPrice).toFixed(2)}`;
                 
-                document.getElementById('wastedGas').textContent = `${wastedGas.toFixed(4)} ETH`;
+                document.getElementById('wastedGas').textContent = `${wastedGas.toFixed(6)} ETH`;
                 document.getElementById('wastedUsd').textContent = `≈ $${(wastedGas * ethPrice).toFixed(2)} lost`;
                 
                 document.getElementById('walletAge').textContent = walletAgeDays > 0 ? `${walletAgeDays} days` : 'New wallet';
                 document.getElementById('firstTx').textContent = `First tx: ${firstTxDate}`;
                 
-                document.getElementById('uniqueContracts').textContent = uniqueContracts;
+                document.getElementById('uniqueContracts').textContent = uniqueContracts.toLocaleString();
                 
-                // Achievements
+                // Render components
                 renderAchievements(data);
-                
-                // Heatmap
                 generateHeatmap(transactions);
-                
-                // Transactions
                 renderTransactions(transactions, address);
                 
                 // Show results
