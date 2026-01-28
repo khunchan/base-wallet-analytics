@@ -1,9 +1,14 @@
 # 🔷 Base Wallet Analytics
 
-A powerful, beautiful analytics dashboard for Base network wallets. Get deep insights into any wallet's activity, personality, and achievements.
+A premium analytics dashboard for Base network wallets. Get deep insights into any wallet's activity, personality, and achievements.
 
-![Base Wallet Analytics](https://img.shields.io/badge/Base-Network-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+## 🚀 Get Access
+
+**[👉 Unlock Analytics for $0.01](https://khunchan.github.io/base-wallet-analytics/payment-page.html)**
+
+One-time payment • 30 days access • Powered by Base network
+
+---
 
 ## ✨ Features
 
@@ -22,11 +27,10 @@ Unlock badges based on wallet activity:
 - 🎯 First Steps - First transaction
 - 💯 Century Club - 100+ transactions
 - 🚀 Power User - 1000+ transactions
-- 🔥 Gas Burner - Spent 0.1+ ETH on gas
+- ⛽ Gas Burner - Spent 0.1+ ETH on gas
 - ❌ Fail Master - 10+ failed transactions
 - ✨ Perfectionist - 50+ tx with 0 fails
-- 🎂 OG - Wallet older than 1 year
-- 🧭 Explorer - 20+ unique contracts
+- 🎖️ Veteran - Wallet older than 180 days
 
 ### 📊 Detailed Statistics
 - Total transactions (sent/received)
@@ -45,39 +49,30 @@ Composite score (0-100) based on:
 - Success rate
 - Wallet age
 - Protocol diversity
-- Balance
 
-## 🚀 Live Demo
+---
 
-[View Live Demo](https://khunchan.github.io/base-wallet-analytics)
+## 💎 Pricing
+
+| Plan | Price | Duration |
+|------|-------|----------|
+| Basic Access | **$0.01** | 30 days |
+
+Payment is processed on-chain via smart contract on Base network.
+
+**Contract:** [`0x5DCe73520367CfF8Cb6A8564954172a32Ac3aB7d`](https://basescan.org/address/0x5DCe73520367CfF8Cb6A8564954172a32Ac3aB7d)
+
+---
 
 ## 🛠️ Tech Stack
 
 - Pure HTML/CSS/JavaScript
-- No frameworks required
-- Basescan API integration
+- Etherscan V2 API
+- ethers.js for Web3
+- Smart contract paywall on Base
 - Mobile responsive design
 
-## 📦 Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/khunchan/base-wallet-analytics.git
-```
-
-2. Open `index.html` in your browser
-
-Or deploy to GitHub Pages for free hosting!
-
-## 🔑 API Setup
-
-The app uses Basescan API. Get your free API key at:
-https://basescan.org/apis
-
-Replace the API key in `index.html`:
-```javascript
-const API_KEY = 'YOUR_API_KEY_HERE';
-```
+---
 
 ## 🎨 Design
 
@@ -86,19 +81,17 @@ const API_KEY = 'YOUR_API_KEY_HERE';
 - Smooth animations
 - Fully responsive
 
+---
+
 ## 📝 License
 
 MIT License - feel free to use and modify!
 
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, please open an issue first.
+---
 
 ## 👤 Author
 
 **khunchan**
 - GitHub: [@khunchan](https://github.com/khunchan)
-
----
 
 Built with 💙 for the Base ecosystem
