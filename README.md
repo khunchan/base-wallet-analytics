@@ -1,10 +1,10 @@
 # 🔷 Base Wallet Analytics
 
-A premium analytics dashboard for Base network wallets. Get deep insights into any wallet's activity, personality, and achievements.
+A premium analytics dashboard for Base network wallets with Web3 paywall.
 
 ## 🚀 Get Access
 
-**[👉 Unlock Analytics for $0.01](https://khunchan.github.io/base-wallet-analytics/payment-page.html)**
+**[👉 Unlock Analytics for $0.01](https://base-wallet-analytics.vercel.app/payment-page.html)**
 
 One-time payment • 30 days access • Powered by Base network
 
@@ -15,77 +15,96 @@ One-time payment • 30 days access • Powered by Base network
 ### 🎭 Wallet Personality
 Automatically determines wallet type based on behavior:
 - 🎰 **Degen** - High-risk trader
-- 🐋 **Whale** - Big player with massive transactions
+- 🐋 **Whale** - Big player
 - 💎 **Diamond Hands** - Patient holder
 - 🦐 **Shrimp** - Small but active
-- 🤖 **Bot Suspect** - Unusually regular patterns
+- 🤖 **Bot Suspect** - Unusual patterns
 - 🧭 **Explorer** - Tries many protocols
-- 👻 **Ghost** - Very low activity
 
 ### 🏆 Achievement System
-Unlock badges based on wallet activity:
-- 🎯 First Steps - First transaction
-- 💯 Century Club - 100+ transactions
-- 🚀 Power User - 1000+ transactions
-- ⛽ Gas Burner - Spent 0.1+ ETH on gas
-- ❌ Fail Master - 10+ failed transactions
-- ✨ Perfectionist - 50+ tx with 0 fails
-- 🎖️ Veteran - Wallet older than 180 days
+Unlock badges based on activity:
+- 🎯 First Steps • 💯 Century Club • 🚀 Power User
+- ⛽ Gas Burner • ❌ Fail Master • ✨ Perfectionist
+- 🎖️ Veteran • 🧭 Explorer • 🏦 DeFi User
 
 ### 📊 Detailed Statistics
 - Total transactions (sent/received)
 - Success rate
 - Gas spent (ETH & USD)
-- Wasted on failed transactions
 - Wallet age
-- Unique contracts interacted
+- Unique contracts
 
 ### 📈 Activity Heatmap
-GitHub-style heatmap showing transaction activity over the last 52 weeks.
-
-### 💯 Wallet Score
-Composite score (0-100) based on:
-- Transaction activity
-- Success rate
-- Wallet age
-- Protocol diversity
-
----
-
-## 💎 Pricing
-
-| Plan | Price | Duration |
-|------|-------|----------|
-| Basic Access | **$0.01** | 30 days |
-
-Payment is processed on-chain via smart contract on Base network.
-
-**Contract:** [`0x5DCe73520367CfF8Cb6A8564954172a32Ac3aB7d`](https://basescan.org/address/0x5DCe73520367CfF8Cb6A8564954172a32Ac3aB7d)
+GitHub-style heatmap showing transaction activity over 52 weeks
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Pure HTML/CSS/JavaScript
-- Etherscan V2 API
-- ethers.js for Web3
-- Smart contract paywall on Base
-- Mobile responsive design
+- HTML/CSS/JavaScript (Frontend)
+- Vercel Serverless Functions (API)
+- Basescan API (Data)
+- Smart Contract Paywall on Base
 
 ---
 
-## 🎨 Design
+## 💎 Smart Contract
 
-- Dark cyberpunk theme
-- Neon accents matching Base brand
-- Smooth animations
-- Fully responsive
+**Paywall Contract:** [`0x5DCe73520367CfF8Cb6A8564954172a32Ac3aB7d`](https://basescan.org/address/0x5DCe73520367CfF8Cb6A8564954172a32Ac3aB7d)
+
+---
+
+## 🚀 Deploy Your Own
+
+### 1. Fork this repo
+
+### 2. Deploy to Vercel
+```bash
+npm install -g vercel
+vercel
+```
+
+### 3. Add Environment Variables
+In Vercel Dashboard → Settings → Environment Variables:
+```
+BASESCAN_API_KEY=your_api_key_here
+```
+
+Get free API key at: https://basescan.org/apis
+
+### 4. Done!
+Your app is live at `https://your-project.vercel.app`
+
+---
+
+## 📁 Project Structure
+
+```
+base-wallet-analytics/
+├── index.html          # Main dashboard
+├── payment-page.html   # Payment page
+├── api/
+│   ├── balance.js      # Get wallet balance
+│   ├── transactions.js # Get transactions
+│   └── ethprice.js     # Get ETH price
+├── vercel.json         # Vercel config
+├── .env.example        # Environment variables template
+└── .gitignore          # Git ignore rules
+```
+
+---
+
+## 🔒 Security
+
+- ✅ API keys stored in Vercel Environment Variables (not in code)
+- ✅ Server-side API calls (keys never exposed to client)
+- ✅ Smart contract paywall for access control
 
 ---
 
 ## 📝 License
 
-MIT License - feel free to use and modify!
+MIT License
 
 ---
 
