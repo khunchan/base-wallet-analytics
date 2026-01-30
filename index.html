@@ -743,7 +743,7 @@
                     const gasUsed = parseInt(tx.gasUsed) || 0;
                     const gasPrice = parseInt(tx.gasPrice) || 0;
                     const l2Gas = (gasUsed * gasPrice) / 1e18;
-                    const l1FeesPaid = parseInt(tx.l1Fee) || 0;
+                    const l1FeesPaid = parseInt(tx.L1FeesPaid) || 0;
                     const l1Gas = l1FeesPaid / 1e18;
                     const totalGas = l2Gas + l1Gas;
                     gasSpent += totalGas;
